@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class Simulator implements Runnable {
 
-	private String path = "C:/Users/Axel/Desktop/Cours/POO/Parking/ParkingSensor/src/SnsDesc";
+	private String path = "src/SnsDesc";
 	private File snsDescDir = new File(path);
 	private File[] allSnsDesc = snsDescDir.listFiles();
 	private ArrayList<String> nameFile = new ArrayList<>();
