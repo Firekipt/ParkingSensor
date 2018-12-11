@@ -1,0 +1,3 @@
+SID: 2
+FREQ: 2000
+LNK: C:/Users/Axel/Desktop/Cours/POO/Parking/ParkingSensor/src/Sns/sns2.txt
