@@ -7,16 +7,16 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class Simulator implements Runnable {
+public class Simulator {
 
 	private String path = "src/SnsDesc";
 	private File snsDescDir = new File(path);
 	private File[] allSnsDesc = snsDescDir.listFiles();
 	private ArrayList<String> nameFile = new ArrayList<>();
 
-	private ArrayList<String> sid = new ArrayList<>();
-	private ArrayList<String> freq = new ArrayList<>();
-	private ArrayList<String> lnk = new ArrayList<>();
+	private static ArrayList<String> sid = new ArrayList<>();
+	private static ArrayList<String> freq = new ArrayList<>();
+	private static ArrayList<String> lnk = new ArrayList<>();
 
 	private boolean allRead = false;
 
@@ -24,8 +24,7 @@ public class Simulator implements Runnable {
 
 	}
 
-	@Override
-	public void run() {
+	public boolean start() {
 		while(!allRead) {
 			for(File file : allSnsDesc)
 			{
@@ -46,13 +45,13 @@ public class Simulator implements Runnable {
 							data = br.readLine().split(" ");
 							if (i == 0) {
 								sid.add(data[1]);
-								System.out.println("SID lu : " + data[1]);
+								//System.out.println("SID lu : " + data[1]);
 							} else if (i == 1) {
 								freq.add(data[1]);
-								System.out.println("FREQ lu : " + data[1]);
+								//System.out.println("FREQ lu : " + data[1]);
 							} else {
 								lnk.add(data[1]);
-								System.out.println("LNK lu : " + data[1]);
+								//System.out.println("LNK lu : " + data[1]);
 							}
 						}
 					} catch (IOException e1) {
@@ -73,12 +72,18 @@ public class Simulator implements Runnable {
 			}
 		}
 
-		System.out.println("Création et démarrage des adaptateurs");
+		return true;
+	}
 
-		for (int i = 0; i < sid.size(); i++) {
-			Adapter adapter = new Adapter(sid.get(i), freq.get(i), lnk.get(i));
-			Thread threadAdapter = new Thread(adapter);
-			threadAdapter.start();
-		}
+	public ArrayList<String> getAllSid() {
+		return sid;
+	}
+
+	public ArrayList<String> getAllFreq() {
+		return freq;
+	}
+
+	public ArrayList<String> getAllLnk() {
+		return lnk;
 	}
 }
