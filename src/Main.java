@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import Adapter.*;
 import Filter.Filter;
 import Server.Server;
+import view.Interface;
 
 public class Main {
 	private static Simulator simulator = new Simulator();
@@ -44,5 +45,8 @@ public class Main {
 		adapter3 = new Adapter(simulator.getAllSid().get(2), simulator.getAllFreq().get(2), simulator.getAllLnk().get(2), filterType3, server);
 		threadAdapter3 = new Thread(adapter3);
 		threadAdapter3.start();
+		
+		Interface frame = new Interface(server);
+		frame.setVisible(true);
     }
 }

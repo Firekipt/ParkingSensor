@@ -39,4 +39,16 @@ public class Server implements Runnable {
 		this.dataSns3 = data;
 		System.out.println("Donnée 3 modifiée");
 	}
+
+	public String getDataSns1() {
+		return dataSns1;
+	}
+
+	public String getDataSns2() {
+		return dataSns2;
+	}
+
+	public String getDataSns3() {
+		return dataSns3;
+	}
 }
